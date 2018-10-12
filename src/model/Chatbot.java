@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class Chatbot
 {
-	private ArrayList<String> responseList = new ArrayList<String>();
+	private ArrayList<String> responseList;
 	private ArrayList<String> spookyList = new ArrayList<String>();
 	private String content = "";
 	private String currentUser = "";
@@ -13,7 +13,8 @@ public class Chatbot
 	
 	public Chatbot()
 	{
-		
+		responseList = new ArrayList<String>();
+	
 	}
 	
 	public Chatbot(String userInput)
@@ -21,10 +22,10 @@ public class Chatbot
 		
 	}
 	
-	public String askName()
+	public void askName()
 	{
-		
-		return null;
+		String userInput = JOptionPane.showInputDialog(null, "Hello, I'm simpleBot, what's your name?");
+		this.setCurrentUser(userInput);
 	}
 	//--[GET]--
 	public String getContent()

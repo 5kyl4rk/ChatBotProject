@@ -1,4 +1,6 @@
 package controller;
+import javax.swing.JOptionPane;
+
 import model.Chatbot;
 
 public class ChatController
@@ -12,7 +14,17 @@ public class ChatController
 	}
 	
 	public void start()
-	{
+	{	
+		String userInput = "";
+		boolean leaveChat = false;
+		while(!leaveChat)
+		{
+			userInput = JOptionPane.showInputDialog(null, "...");
+			if(userInput.equalsIgnoreCase("quit"))
+			{
+				leaveChat = true;
+			}
+		}
 		
 	}
 	
