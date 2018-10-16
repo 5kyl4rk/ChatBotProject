@@ -34,7 +34,17 @@ public class Chatbot
 		responseList.add("FeelsBadMan");
 		responseList.add("¯\\_(ツ)_/¯");
 		responseList.add("no u");
+		responseList.add("wtf?");
+		responseList.add("*Jumps out window*");
 		
+		
+		spookyList.add("2spooky4me");
+		spookyList.add("Halloween is just cosplay for normies");
+		spookyList.add("*hyperrealistic eyes bleeds hyperreleastic blood*");
+		spookyList.add("BEN DROWNED");
+		spookyList.add("spoOoOoOky");
+		spookyList.add("spoopy");
+		spookyList.add("Whoa! I'm in Undertale!");
 		
 	}
 	
@@ -47,6 +57,16 @@ public class Chatbot
 	{
 		
 	}
+	
+	public String processText(String userText)
+	{
+		String answer = "";
+		
+		answer += "You said: \"" + userText +"\"";
+		
+		return answer;
+	}
+	
 	//--[GET]--
 	public String getContent()
 	{

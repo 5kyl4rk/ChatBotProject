@@ -19,21 +19,11 @@ public class ChatController
 		debugBot();
 		
 		String response = "...";
-		String userInput;
+		String userInput = "";
 		boolean leaveChat = false;
-		while (!leaveChat)
-		{
-			userInput = JOptionPane.showInputDialog(null, fitString(response, 20));
-			if(userInput == null || userInput.trim().equals(""))
-			{
-				JOptionPane.showMessageDialog(null, "Sorry but I can't do much if you don't enter anything");
-			}
-			
-			if (userInput.equalsIgnoreCase("quit"))
-			{
-				JOptionPane.showMessageDialog(null, "See ya!");
-				leaveChat = true;
-			}
+		while (!userInput.equalsIgnoreCase("quit"))
+		{	
+			userInput = interactWithChatbot(userInput);
 		}
 
 	}
@@ -103,10 +93,16 @@ public class ChatController
 		}
 	}
 
-	public String interactWithChatbot(String userInput)
+	public String interactWithChatbot(String text)
 	{
-		return null;
+		String output = "";
+		String userResponse = JOptionPane.showInputDialog(null, "Hi!");
+		output = simpleBot.processText(userResponse);
+		
+		return JOptionPane.showInputDialog(null,output);
 	}
+	
+	
 
 	/**
 	 * Wraps String to fit vertically
