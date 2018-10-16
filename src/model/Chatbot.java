@@ -6,15 +6,36 @@ import javax.swing.JOptionPane;
 public class Chatbot
 {
 	private ArrayList<String> responseList;
-	private ArrayList<String> spookyList = new ArrayList<String>();
-	private String content = "";
-	private String currentUser = "";
-	private String joke = "";
+	private ArrayList<String> spookyList; 
+	private String content;
+	private String currentUser;
+	private String joke;
 	
 	public Chatbot()
 	{
-		responseList = new ArrayList<String>();
+		this.joke = "What did the ghost eat for dinner?";//answer "Spooketi"
+		this.content = new String("");
+		this.currentUser = "notHuman";
+		
+		this.responseList = new ArrayList<String>();
+		this.spookyList = new ArrayList<String>();
+		
+		buildTheLists();
 	
+	}
+	
+	private void buildTheLists()
+	{
+		responseList.add("Hello! How are you?");
+		responseList.add("lol wut?");
+		responseList.add(">w<");
+		responseList.add(":'(");
+		responseList.add("welp...");
+		responseList.add("FeelsBadMan");
+		responseList.add("¯\\_(ツ)_/¯");
+		responseList.add("no u");
+		
+		
 	}
 	
 	public Chatbot(String userInput)
@@ -24,8 +45,7 @@ public class Chatbot
 	
 	public void askName()
 	{
-		String userInput = JOptionPane.showInputDialog(null, "Hello, I'm simpleBot, what's your name?");
-		this.setCurrentUser(userInput);
+		
 	}
 	//--[GET]--
 	public String getContent()
