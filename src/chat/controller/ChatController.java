@@ -104,7 +104,10 @@ public class ChatController
 		return JOptionPane.showInputDialog(null,output);
 	}
 	
-	
+	public Chatbot getChatbot()
+	{
+		return simpleBot;
+	}
 
 	/**
 	 * Wraps String to fit vertically
@@ -216,4 +219,6 @@ public class ChatController
 		return smallString;
 
 	}
+
+	
 }

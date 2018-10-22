@@ -100,7 +100,7 @@ public class ChabotTest
 	public void testGetResponseList()
 	{
 		 assertNotNull("You really need to initialize the responseList", testedBot.getResponseList());
-		 assertTrue("You need to have more than 15 items in the repsonseList", testedBot.getResponseList().size() > 15);
+		 assertTrue("You need to have more than 15 items in the responseList", testedBot.getResponseList().size() > 15);
 		 assertTrue("The first item in your list has to mention Hello", testedBot.getResponseList().get(0).contains("Hello"));
 	}
 
