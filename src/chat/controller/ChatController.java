@@ -1,8 +1,10 @@
-package controller;
+package chat.controller;
 
 import javax.swing.JOptionPane;
+
+import chat.model.Chatbot;
+
 import java.util.Random;
-import model.Chatbot;
 
 public class ChatController
 {
