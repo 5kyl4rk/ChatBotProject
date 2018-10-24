@@ -77,6 +77,25 @@ public class Chatbot
 
 		return answer;
 	}
+	
+	public boolean legitimacyChecker(String input)
+	{
+		boolean legit = true;
+		
+		if(input == null)//input can't be null
+		{
+			legit = false;
+		}
+		else if(input.trim().length() < 2)//input can't be less than two chars and can't be empty spaces
+		{
+			legit = false;
+		}
+		else if(input.contains("sdf") || input.contains("jkl") || input.contains("cvb"))//input can't be keyboard smash (statement contains common smash sequences)
+		{
+			legit = false;
+		}
+		return legit;
+	}
 
 	// --[GET]--
 	public String getContent()
