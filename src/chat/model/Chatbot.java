@@ -11,13 +11,14 @@ public class Chatbot
 	private String content;
 	private String currentUser;
 	private String joke;
+	private String response;
 
 	public Chatbot()
 	{
 		this.joke = "What did the ghost eat for dinner?";// answer "Spooketi"
 		this.content = new String("");
 		this.currentUser = "notHuman";
-
+		this.response = "Hi!";
 		this.responseList = new ArrayList<String>();
 		this.spookyList = new ArrayList<String>();
 
@@ -96,6 +97,19 @@ public class Chatbot
 		}
 		return legit;
 	}
+	
+	public boolean spookyChecker(String input)
+	{
+		boolean isSpooky = false;
+		for(String currentString : spookyList)
+		{
+			if(input.equals(currentString))
+			{
+				isSpooky = true;
+			}
+		}
+		return isSpooky;
+	}
 
 	// --[GET]--
 	public String getContent()
@@ -111,6 +125,11 @@ public class Chatbot
 	public String getJoke()
 	{
 		return joke;
+	}
+	
+	public String getResponse()
+	{
+		return response;
 	}
 
 	public ArrayList<String> getResponseList()
@@ -132,6 +151,11 @@ public class Chatbot
 	public void setJoke(String joke)
 	{
 		this.joke = joke;
+	}
+	
+	public void setResponse(String response) 
+	{
+		this.response = response;
 	}
 
 	public void setCurrentUser(String userName)
