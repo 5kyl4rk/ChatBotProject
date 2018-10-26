@@ -105,9 +105,9 @@ public class ChatController
 		return output;
 	}
 	
-	public boolean useChatbotCheckers(String type)
+	public String useChatbotCheckers(String type)
 	{
-		
+		return null;
 	}
 	
 	public Chatbot getChatbot()

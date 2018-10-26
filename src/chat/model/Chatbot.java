@@ -16,7 +16,7 @@ public class Chatbot
 	public Chatbot()
 	{
 		this.joke = "What did the ghost eat for dinner?";// answer "Spooketi"
-		this.content = new String("");
+		this.content = new String("banana");
 		this.currentUser = "notHuman";
 		this.response = "Hi!";
 		this.responseList = new ArrayList<String>();
@@ -59,9 +59,9 @@ public class Chatbot
 
 	}
 
-	public Chatbot(String userInput)
+	public Chatbot(String sample)
 	{
-		content = userInput;
+		content = sample;
 	}
 
 	public void askName()
@@ -71,11 +71,24 @@ public class Chatbot
 
 	public String processText(String userText)
 	{
-		String answer = "";
-
-		answer += "You said: \"" + userText + "\"";
-		answer += "\nChatbot says: \"" + userText +"\"";
-
+		String answer;
+		
+		if(legitimacyChecker(userText))
+		{
+			answer = "You said: \"" + userText + "\"";
+			answer += "\nChatbot says: \"" + userText +"\"";
+			if(contentChecker(userText))
+			{
+				answer = "You said the special words";
+			}
+			
+		}
+		else
+		{
+			answer = "You said: NOTHING";
+			answer += "\nChatbot says: \"lol what was that?\"";
+		}
+		
 		return answer;
 	}
 	
@@ -91,7 +104,7 @@ public class Chatbot
 		{
 			legit = false;
 		}
-		else if(input.contains("sdf") || input.contains("jkl") || input.contains("cvb"))//input can't be keyboard smash (statement contains common smash sequences)
+		else if(input.contains("sdf") || input.contains("jkl") || input.contains("cvb") || input.contains("sfk"))//input can't be keyboard smash (statement contains common smash sequences)
 		{
 			legit = false;
 		}
@@ -109,6 +122,16 @@ public class Chatbot
 			}
 		}
 		return isSpooky;
+	}
+	
+	public boolean contentChecker(String input)
+	{
+		boolean isContent = false;
+		if(input.equals(content))
+		{
+			isContent = true;
+		}
+		return isContent;
 	}
 
 	// --[GET]--
