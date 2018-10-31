@@ -12,6 +12,7 @@ public class Chatbot
 	private String currentUser;
 	private String joke;
 	private String response;
+	private boolean leaveChat;
 
 	public Chatbot()
 	{
@@ -21,7 +22,7 @@ public class Chatbot
 		this.response = "Hi!";
 		this.responseList = new ArrayList<String>();
 		this.spookyList = new ArrayList<String>();
-
+		this.leaveChat = false;
 		buildTheLists();
 
 	}
@@ -81,6 +82,15 @@ public class Chatbot
 			{
 				answer = "You said the special words";
 			}
+			if(spookyChecker(userText))
+			{
+				answer = "You're scaring me";
+			}
+			if(userText.equalsIgnoreCase("quit"))
+			{
+				JOptionPane.showMessageDialog(null, "See ya!");
+				this.leaveChat = true;
+			}
 			
 		}
 		else
@@ -116,7 +126,7 @@ public class Chatbot
 		boolean isSpooky = false;
 		for(String currentString : spookyList)
 		{
-			if(input.equals(currentString))
+			if(input.indexOf(currentString) >= 0)
 			{
 				isSpooky = true;
 			}
@@ -163,6 +173,11 @@ public class Chatbot
 	public ArrayList<String> getSpookyList()
 	{
 		return spookyList;
+	}
+	
+	public boolean getLeaveChat()
+	{
+		return leaveChat;
 	}
 
 	// --[SET]--

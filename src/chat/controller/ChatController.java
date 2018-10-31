@@ -21,8 +21,7 @@ public class ChatController
 		//debugBot();
 	
 		String userInput = "Hi!";
-		boolean leaveChat = false;
-		while (!userInput.equalsIgnoreCase("quit"))
+		while (!simpleBot.getLeaveChat())
 		{	
 			userInput = interactWithChatbot(userInput);
 			
