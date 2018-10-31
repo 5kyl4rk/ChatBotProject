@@ -12,7 +12,7 @@ public class ChatController
 
 	public ChatController()
 	{
-		simpleBot = new Chatbot();
+		simpleBot = new Chatbot("Kool-aid");
 
 	}
 
@@ -104,9 +104,14 @@ public class ChatController
 		return output;
 	}
 	
-	public String useChatbotCheckers(String type)
+	public String useChatbotCheckers(String input)
 	{
-		return null;
+		String output = "";
+		if(simpleBot.spookyChecker(input)) 
+		{
+			output = "Happy Halloween bois";
+		}
+		return output;
 	}
 	
 	public Chatbot getChatbot()

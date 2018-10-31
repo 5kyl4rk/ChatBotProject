@@ -26,6 +26,18 @@ public class Chatbot
 		buildTheLists();
 
 	}
+	public Chatbot(String sample)
+	{
+		this.joke = "What did the ghost eat for dinner?";// answer "Spooketi"
+		this.content = sample;
+		this.currentUser = "notHuman";
+		this.response = "Hi!";
+		this.responseList = new ArrayList<String>();
+		this.spookyList = new ArrayList<String>();
+		this.leaveChat = false;
+		buildTheLists();
+	}
+
 
 	private void buildTheLists()
 	{
@@ -60,11 +72,6 @@ public class Chatbot
 
 	}
 
-	public Chatbot(String sample)
-	{
-		content = sample;
-	}
-
 	public void askName()
 	{
 
@@ -76,6 +83,7 @@ public class Chatbot
 		
 		if(legitimacyChecker(userText))
 		{
+			userText = userText.trim();
 			answer = "You said: \"" + userText + "\"";
 			answer += "\nChatbot says: \"" + userText +"\"";
 			if(contentChecker(userText))
