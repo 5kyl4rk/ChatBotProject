@@ -26,6 +26,10 @@ public class Chatbot
 		buildTheLists();
 
 	}
+	/**
+	 * 
+	 * @param sample
+	 */
 	public Chatbot(String sample)
 	{
 		this.joke = "What did the ghost eat for dinner?";// answer "Spooketi"
@@ -37,8 +41,7 @@ public class Chatbot
 		this.leaveChat = false;
 		buildTheLists();
 	}
-
-
+	
 	private void buildTheLists()
 	{
 		responseList.add("Hello! How are you?");
@@ -57,6 +60,7 @@ public class Chatbot
 		responseList.add("Sonic R is the best racing game, no doubts about it");
 		responseList.add("Do you like jazz?");
 		responseList.add(":D");
+		responseList.add("Jake was here");
 		
 		
 		spookyList.add("2spooky4me");
@@ -148,6 +152,32 @@ public class Chatbot
 		if(input.equals(content))
 		{
 			isContent = true;
+		}
+		else if(input.contains(content))
+		{
+			int contentLength = content.length();
+			int contentIndex = input.indexOf(content);
+			if(contentIndex == 0)
+			{
+				if(input.substring(0,contentLength+1).equals(content+" "))
+				{
+					isContent = true;
+				}
+			}
+			else if(contentIndex > 0)
+			{
+				if(contentIndex == (input.length() - contentIndex))
+				{
+					if(input.substring(contentIndex -1).equals(" " + content))
+					{
+						isContent = true;
+					}
+				}
+				else if(input.substring(contentIndex - 1,contentLength + 1).equals(" " + content + " "))
+				{
+					isContent = true;
+				}
+			}
 		}
 		return isContent;
 	}
