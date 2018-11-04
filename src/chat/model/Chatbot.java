@@ -73,7 +73,8 @@ public class Chatbot
 		spookyList.add("You're in for a bad time");
 		spookyList.add("Look! It's the Great Pumpkin!");
 		spookyList.add(0,"Halloween");
-
+		spookyList.add("spooky");
+		
 	}
 
 	public void askName()
@@ -109,7 +110,7 @@ public class Chatbot
 		}
 		else
 		{
-			answer = "You said: NOTHING";
+			answer = "You said: null";
 			answer += "\nChatbot says: \"lol what was that?\"";
 		}
 		
@@ -147,6 +148,7 @@ public class Chatbot
 		}
 		return isSpooky;
 	}
+	
 	/**
 	 * checks to see if content appears isolated in a given input
 	 * @param phrase the original string that you want to check to see if it contains content

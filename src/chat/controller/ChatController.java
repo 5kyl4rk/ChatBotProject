@@ -29,6 +29,9 @@ public class ChatController
 
 	}
 	
+	/**
+	 * playing around with String methods
+	 */
 	public void debugBot()
 	{
 		Random pickRandom = new Random();
@@ -66,7 +69,6 @@ public class ChatController
 				String subStatus; 
 				int subIndex1 = pickRandom.nextInt(userInput.length());
 				int subIndex2 = pickRandom.nextInt(userInput.length());
-				int mem;
 				String subIndexParam;
 				if(subIndex1 == subIndex2)
 				{
@@ -125,9 +127,6 @@ public class ChatController
 	 * 
 	 * @param sample
 	 *            the String you want to format
-	 * @param sample
-	 *            the String you want to format
-	 * 
 	 * @return String that is vertically formatted
 	 */
 	public String fitString(String sample)
