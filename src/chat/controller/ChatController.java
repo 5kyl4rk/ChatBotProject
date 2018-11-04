@@ -12,7 +12,7 @@ public class ChatController
 
 	public ChatController()
 	{
-		simpleBot = new Chatbot("Kool-aid");
+		simpleBot = new Chatbot("cats");
 
 	}
 

@@ -88,8 +88,14 @@ public class Chatbot
 		if(legitimacyChecker(userText))
 		{
 			userText = userText.trim();
+			if(userText.equalsIgnoreCase("quit"))
+			{
+				JOptionPane.showMessageDialog(null, "See ya!");
+				this.leaveChat = true;
+			}
 			answer = "You said: \"" + userText + "\"";
 			answer += "\nChatbot says: \"" + userText +"\"";
+			
 			if(contentChecker(userText))
 			{
 				answer = "You said the special words";
@@ -98,11 +104,7 @@ public class Chatbot
 			{
 				answer = "You're scaring me";
 			}
-			if(userText.equalsIgnoreCase("quit"))
-			{
-				JOptionPane.showMessageDialog(null, "See ya!");
-				this.leaveChat = true;
-			}
+			
 			
 		}
 		else
@@ -145,40 +147,65 @@ public class Chatbot
 		}
 		return isSpooky;
 	}
-	
-	public boolean contentChecker(String input)
+	/**
+	 * checks to see if content appears isolated in a given input
+	 * @param phrase the original string that you want to check to see if it contains content
+	 * @return a boolean value determining whether or not content appears in the phrase
+	 */
+	public boolean contentChecker(String phrase)
 	{
 		boolean isContent = false;
-		if(input.equals(content))
+		/**
+		 * checks first to see if the phrase by itself is the same as content
+		 */
+		if(phrase.equals(content))
 		{
 			isContent = true;
 		}
-		else if(input.contains(content))
+		/**
+		 * else, checks to see if the phrase at least contains content
+		 */
+		else if(phrase.contains(content))
 		{
 			int contentLength = content.length();
-			int contentIndex = input.indexOf(content);
+			int contentIndex = phrase.indexOf(content);//position of where content is located
+			//if content is found at the beginning of the phrase
 			if(contentIndex == 0)
 			{
-				if(input.substring(0,contentLength+1).equals(content+" "))
+				//check to see if the word is by itself	
+				if(phrase.substring(0,contentLength+1).equals(content+" "))
 				{
 					isContent = true;
 				}
 			}
+			//if content is found someplace other than the beginning
 			else if(contentIndex > 0)
 			{
-				if(contentIndex == (input.length() - contentIndex))
+				/**
+				 * checks if content is located at the last possible index
+				 * (Ex: content = "cats"        content.length() = 4
+				 * 		phrase = "I like cats"  phrase.length() = 11
+				 * 
+				 * 		in order for content to be the last word, it's index
+				 * 		would have to be '7' because that's the last possible index
+				 * 		it can fit in without exceeding the phrase length)
+				 */
+				if(contentIndex == (phrase.length() - contentLength))
 				{
-					if(input.substring(contentIndex -1).equals(" " + content))
+					//checks to see if the index before the word is a space since it has to be by itself
+					if(phrase.substring(contentIndex -1).equals(" " + content))
 					{
 						isContent = true;
 					}
 				}
-				else if(input.substring(contentIndex - 1,contentLength + 1).equals(" " + content + " "))
+				//else checks to see if the index before and after the word has a space
+				else if(phrase.substring(contentIndex - 1,contentIndex + contentLength + 1).equals(" " + content + " "))
 				{
 					isContent = true;
 				}
 			}
 		}
+		
 		return isContent;
 	}
 
