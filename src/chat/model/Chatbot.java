@@ -8,6 +8,7 @@ public class Chatbot
 {
 	private ArrayList<String> responseList;
 	private ArrayList<String> spookyList;
+	private ArrayList<String> keyboardSmash;
 	private String content;
 	private String currentUser;
 	private String joke;
@@ -22,28 +23,33 @@ public class Chatbot
 		this.response = "Hi!";
 		this.responseList = new ArrayList<String>();
 		this.spookyList = new ArrayList<String>();
+		this.keyboardSmash = new ArrayList<String>();
 		this.leaveChat = false;
 		buildTheLists();
 
 	}
 	/**
-	 * 
-	 * @param sample
+	 * builds a Chatbot with a specific content value
+	 * @param content special word or phrase
 	 */
-	public Chatbot(String sample)
+	public Chatbot(String content)
 	{
 		this.joke = "What did the ghost eat for dinner?";// answer "Spooketi"
-		this.content = sample;
+		this.content = content;
 		this.currentUser = "notHuman";
 		this.response = "Hi!";
 		this.responseList = new ArrayList<String>();
 		this.spookyList = new ArrayList<String>();
+		this.keyboardSmash = new ArrayList<String>();
 		this.leaveChat = false;
 		buildTheLists();
 	}
-	
+	/**
+	 * adds items to list, useful for when new Chatbot is made
+	 */
 	private void buildTheLists()
 	{
+		//--[ResponseList]--
 		responseList.add("Hello! How are you?");
 		responseList.add("lol wut?");
 		responseList.add(">w<");
@@ -62,7 +68,7 @@ public class Chatbot
 		responseList.add(":D");
 		responseList.add("Jake was here");
 		
-		
+		//--[Spookylist]--
 		spookyList.add("2spooky4me");
 		spookyList.add("Halloween is just cosplay for normies");
 		spookyList.add("*hyperrealistic eyes bleeds hyperreleastic blood*");
@@ -75,13 +81,34 @@ public class Chatbot
 		spookyList.add(0,"Halloween");
 		spookyList.add("spooky");
 		
+		//--[KeyboardSmash]--
+		keyboardSmash.add("sldj");
+		keyboardSmash.add("dfn");
+		keyboardSmash.add("ncjz");
+		keyboardSmash.add("dsjk");
+		keyboardSmash.add("fds");
+		keyboardSmash.add("kjl");
+		keyboardSmash.add("mvn");
+		keyboardSmash.add("sdz");
+		keyboardSmash.add("fkg");
+		keyboardSmash.add("jxm");
+		keyboardSmash.add("sdf");
+		keyboardSmash.add("jkl");
+		keyboardSmash.add("cvb");
+		keyboardSmash.add("sfk");
+		
 	}
 
 	public void askName()
 	{
 
 	}
-
+	/**
+	 * Takes the user's input and uses the chatbot checkers to then give an adequate response
+	 * (As of now it only repeats what the user puts in, except for *special* cases)
+	 * @param userText the user's input
+	 * @return a String that has additional information based off the user's input
+	 */
 	public String processText(String userText)
 	{
 		String answer;
@@ -116,7 +143,11 @@ public class Chatbot
 		
 		return answer;
 	}
-	
+	/**
+	 * Checks to see if the input is valid
+	 * @param input the String you need to check
+	 * @return a boolean stating whether it's valid
+	 */
 	public boolean legitimacyChecker(String input)
 	{
 		boolean legit = true;
@@ -129,13 +160,23 @@ public class Chatbot
 		{
 			legit = false;
 		}
-		else if(input.contains("sdf") || input.contains("jkl") || input.contains("cvb") || input.contains("sfk"))//input can't be keyboard smash (statement contains common smash sequences)
-		{
-			legit = false;
-		}
+		else 
+			for(String current : keyboardSmash)//input can't be keyboard smash (statement contains common smash sequences)
+			{
+				if(input.contains(current))
+				{
+					legit = false;
+				}
+			}
+	
 		return legit;
 	}
 	
+	/**
+	 * checks to see if the String appears in spookyList
+	 * @param input 
+	 * @return
+	 */
 	public boolean spookyChecker(String input)
 	{
 		boolean isSpooky = false;
@@ -190,7 +231,7 @@ public class Chatbot
 				 * 
 				 * 		in order for content to be the last word, it's index
 				 * 		would have to be '7' because that's the last possible index
-				 * 		it can fit in without exceeding the phrase length)
+				 * 		it can fit in without exceeding the phrase's original length)
 				 */
 				if(contentIndex == (phrase.length() - contentLength))
 				{

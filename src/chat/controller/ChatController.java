@@ -20,10 +20,10 @@ public class ChatController
 	{
 		//debugBot();
 	
-		String userInput = "Hi!";
+		String response = "Hi!";
 		while (!simpleBot.getLeaveChat())
 		{	
-			userInput = interactWithChatbot(userInput);
+			response = interactWithChatbot(response);
 			
 		}
 
@@ -96,16 +96,25 @@ public class ChatController
 		}
 	}
 
-	public String interactWithChatbot(String text)
+	/**
+	 * allows user to enter in input and displays previous response
+	 * @param displayText the text that will be displayed
+	 * @return a new response based off of the user's input after it has been "processed"
+	 */
+	public String interactWithChatbot(String displayText)
 	{
 		String output = "";
-		String userResponse = JOptionPane.showInputDialog(null, text);
+		String userInput = JOptionPane.showInputDialog(null, displayText);
 		
-		output = simpleBot.processText(userResponse);
+		output = simpleBot.processText(userInput);
 		
 		return output;
 	}
-	
+	/**
+	 * uses the chatbot checkers to display specific phrases based off the input
+	 * @param input the user's input
+	 * @return a String based off the checker
+	 */
 	public String useChatbotCheckers(String input)
 	{
 		String output = "";
@@ -115,7 +124,10 @@ public class ChatController
 		}
 		return output;
 	}
-	
+	/**
+	 * get's the Chatbot created
+	 * @return the chatbot used in this program
+	 */
 	public Chatbot getChatbot()
 	{
 		return simpleBot;
