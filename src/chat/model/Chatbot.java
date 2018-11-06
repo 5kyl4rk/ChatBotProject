@@ -82,7 +82,7 @@ public class Chatbot
 		spookyList.add("spooky");
 		
 		//--[KeyboardSmash]--
-		keyboardSmash.add("sldj");
+		keyboardSmash.add("sdj");
 		keyboardSmash.add("dfn");
 		keyboardSmash.add("ncjz");
 		keyboardSmash.add("dsjk");
@@ -96,6 +96,20 @@ public class Chatbot
 		keyboardSmash.add("jkl");
 		keyboardSmash.add("cvb");
 		keyboardSmash.add("sfk");
+		keyboardSmash.add("dsj");
+		keyboardSmash.add("lfj");
+		keyboardSmash.add("kmz");
+		keyboardSmash.add("asdf");
+		keyboardSmash.add("hkl");
+		keyboardSmash.add("xcn");
+		keyboardSmash.add("asdk");
+		keyboardSmash.add("zx");
+		keyboardSmash.add("zmx");
+		keyboardSmash.add("xz");
+		keyboardSmash.add("ajf");
+		keyboardSmash.add("nvd");
+		keyboardSmash.add("jfa");
+		keyboardSmash.add("asdk");
 		
 	}
 
@@ -163,7 +177,7 @@ public class Chatbot
 		else 
 			for(String current : keyboardSmash)//input can't be keyboard smash (statement contains common smash sequences)
 			{
-				if(input.contains(current))
+				if(input.toLowerCase().contains(current))
 				{
 					legit = false;
 				}
