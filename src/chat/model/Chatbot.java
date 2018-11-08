@@ -126,6 +126,8 @@ public class Chatbot
 	public String processText(String userText)
 	{
 		String answer;
+		int randomIndex = (int)(Math.random() * responseList.size());
+		String chatbotSays = responseList.get(randomIndex);
 		
 		if(legitimacyChecker(userText))
 		{
@@ -136,7 +138,7 @@ public class Chatbot
 				this.leaveChat = true;
 			}
 			answer = "You said: \"" + userText + "\"";
-			answer += "\nChatbot says: \"" + userText +"\"";
+			answer += "\nChatbot says: \"" + chatbotSays +"\"";
 			
 			if(contentChecker(userText))
 			{
