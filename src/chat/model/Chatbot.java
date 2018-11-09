@@ -10,6 +10,7 @@ public class Chatbot
 	private ArrayList<String> spookyList;
 	private ArrayList<String> keyboardSmash;
 	private ArrayList<String> questionKeywords;
+	private ArrayList<String> complexQuestion;
 	private ArrayList<String> yesNoAnswer;
 	private String content;
 	private String currentUser;
@@ -28,6 +29,7 @@ public class Chatbot
 		this.keyboardSmash = new ArrayList<String>();
 		this.yesNoAnswer = new ArrayList<String>();
 		this.questionKeywords = new ArrayList<String>();
+		this.complexQuestion = new ArrayList<String>();
 		this.leaveChat = false;
 		buildTheLists();
 
@@ -48,6 +50,7 @@ public class Chatbot
 		this.responseList = new ArrayList<String>();
 		this.spookyList = new ArrayList<String>();
 		this.questionKeywords = new ArrayList<String>();
+		this.complexQuestion = new ArrayList<String>();
 		this.yesNoAnswer = new ArrayList<String>();
 		this.keyboardSmash = new ArrayList<String>();
 		this.leaveChat = false;
@@ -107,6 +110,14 @@ public class Chatbot
 		questionKeywords.add("would");
 		questionKeywords.add("could");
 		questionKeywords.add("should");
+		
+		//--[ComplexQuestions]--
+		complexQuestion.add("who");
+		complexQuestion.add("what");
+		complexQuestion.add("when");
+		complexQuestion.add("where");
+		complexQuestion.add("why");
+		complexQuestion.add("how");
 		
 		//--[YesNoAnswer]--
 		yesNoAnswer.add("No");
@@ -297,6 +308,13 @@ public class Chatbot
 				if(keywordChecker(question, currentVerb.toLowerCase(), false))
 				{
 					isQuestion = true;
+				}
+			}
+			for(String currentVerb : complexQuestion)
+			{
+				if(keywordChecker(question, currentVerb.toLowerCase(), false))
+				{
+					isQuestion = false;
 				}
 			}
 		}
