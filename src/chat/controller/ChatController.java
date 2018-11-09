@@ -19,8 +19,9 @@ public class ChatController
 	public void start()
 	{
 		//debugBot();
-	
-		String response = "Hi!";
+		
+		simpleBot.askName();
+		String response = simpleBot.getResponse();
 		while (!simpleBot.getLeaveChat())
 		{	
 			response = interactWithChatbot(response);
