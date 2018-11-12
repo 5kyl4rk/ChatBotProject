@@ -110,16 +110,16 @@ public class Chatbot
 		questionKeywords.add("would");
 		questionKeywords.add("could");
 		questionKeywords.add("should");
-		
-		//--[ComplexQuestions]--
+
+		// --[ComplexQuestions]--
 		complexQuestion.add("who");
 		complexQuestion.add("what");
 		complexQuestion.add("when");
 		complexQuestion.add("where");
 		complexQuestion.add("why");
 		complexQuestion.add("how");
-		
-		//--[YesNoAnswer]--
+
+		// --[YesNoAnswer]--
 		yesNoAnswer.add("No");
 		yesNoAnswer.add("Yes");
 		yesNoAnswer.add("Definitely");
@@ -192,13 +192,13 @@ public class Chatbot
 		if (legitimacyChecker(userText))
 		{
 			userText = userText.trim();
-			
+
 			if (userText.equalsIgnoreCase("quit"))
 			{
 				JOptionPane.showMessageDialog(null, "See ya!");
 				this.leaveChat = true;
 			}
-			
+
 			if (contentChecker(userText))
 			{
 				chatbotSays = "You said the special words";
@@ -207,12 +207,12 @@ public class Chatbot
 			{
 				chatbotSays = "You're scaring me";
 			}
-			
-			if(YNQuestionChecker(userText))
+
+			if (YNQuestionChecker(userText))
 			{
 				chatbotSays = getYesNoAnswer();
 			}
-			
+
 			answer = "You said: \"" + userText + "\"";
 			answer += "\nChatbot says: \"" + chatbotSays + "\"";
 
@@ -288,11 +288,11 @@ public class Chatbot
 	public boolean contentChecker(String phrase)
 	{
 		boolean isContent = false;
-		if(keywordChecker(phrase, content, true))
+		if (keywordChecker(phrase, content, true))
 		{
 			isContent = true;
 		}
-		
+
 		return isContent;
 	}
 
@@ -300,19 +300,19 @@ public class Chatbot
 	{
 		question = question.toLowerCase();
 		boolean isQuestion = false;
-		
-		if(question.contains("?"))
+
+		if (question.contains("?"))
 		{
-			for(String currentVerb : questionKeywords)
+			for (String currentVerb : questionKeywords)
 			{
-				if(keywordChecker(question, currentVerb.toLowerCase(), false))
+				if (keywordChecker(question, currentVerb.toLowerCase(), false))
 				{
 					isQuestion = true;
 				}
 			}
-			for(String currentVerb : complexQuestion)
+			for (String currentVerb : complexQuestion)
 			{
-				if(keywordChecker(question, currentVerb.toLowerCase(), false))
+				if (keywordChecker(question, currentVerb.toLowerCase(), false))
 				{
 					isQuestion = false;
 				}
@@ -321,11 +321,11 @@ public class Chatbot
 
 		return isQuestion;
 	}
-	
+
 	private String getYesNoAnswer()
 	{
 		int randomInt = (int) (Math.random() * yesNoAnswer.size());
-		
+
 		return yesNoAnswer.get(randomInt);
 	}
 
@@ -342,41 +342,49 @@ public class Chatbot
 			else
 			{
 				int keyLength = keyword.length();
-				int keyIndex = phrase.indexOf(keyword);// position of where keyword is located
-				// if keyword is found at the beginning of the phrase
-				if (keyIndex == 0)
+				int fromIndex = 0;//starts search at index
+				int keyIndex = phrase.indexOf(keyword, fromIndex);// position of where keyword is located
+				
+				while (keyIndex >= 0 && !hasKeyword)
 				{
-					// check to see if the word is by itself
-					if (phrase.substring(0, keyLength + 1).equals(keyword + " "))
+					// if keyword is found at the beginning of the phrase
+					if (keyIndex == 0)
 					{
-						hasKeyword = true;
-					}
-				}
-				// if content is found someplace other than the beginning
-				else if (keyIndex > 0)
-				{
-					/**
-					 * checks if content is located at the last possible index (Ex: keyword = "cats"
-					 * keyword.length() = 4 phrase = "I like cats" phrase.length() = 11
-					 * 
-					 * in order for keyword to be the last word, it's index would have to be '7'
-					 * because that's the last possible index it can fit in without exceeding the
-					 * phrase's original length)
-					 */
-					if (keyIndex == (phrase.length() - keyLength))
-					{
-						// checks to see if the index before the word is a space since it has to be by
-						// itself
-						if (phrase.substring(keyIndex - 1).equals(" " + keyword))
+						// check to see if the word is by itself
+						if (phrase.substring(0, keyLength + 1).equals(keyword + " "))
 						{
 							hasKeyword = true;
 						}
 					}
-					// else checks to see if the index before and after the word has a space
-					else if (phrase.substring(keyIndex - 1, keyIndex + keyLength + 1).equals(" " + keyword + " "))
+					// if content is found someplace other than the beginning
+					else if (keyIndex > 0)
 					{
-						hasKeyword = true;
+						/**
+						 * checks if content is located at the last possible index (Ex: keyword = "cats"
+						 * keyword.length() = 4 phrase = "I like cats" phrase.length() = 11
+						 * 
+						 * in order for keyword to be the last word, it's index would have to be '7'
+						 * because that's the last possible index it can fit in without exceeding the
+						 * phrase's original length)
+						 */
+						if (keyIndex == (phrase.length() - keyLength))
+						{
+							// checks to see if the index before the word is a space since it has to be by
+							// itself
+							if (phrase.substring(keyIndex - 1).equals(" " + keyword))
+							{
+								hasKeyword = true;
+							}
+						}
+						// else checks to see if the index before and after the word has a space
+						else if (phrase.substring(keyIndex - 1, keyIndex + keyLength + 1).equals(" " + keyword + " "))
+						{
+							hasKeyword = true;
+						}
 					}
+					
+					fromIndex ++;
+					keyIndex = phrase.indexOf(keyword, fromIndex);
 				}
 			}
 		}
