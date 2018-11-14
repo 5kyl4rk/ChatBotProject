@@ -171,7 +171,7 @@ public class Chatbot
 			currentUser = userName;
 		}
 
-		response = "Hello " + currentUser;
+		JOptionPane.showMessageDialog(null, "Hello " + currentUser);
 	}
 
 	/**
@@ -329,6 +329,13 @@ public class Chatbot
 		return yesNoAnswer.get(randomInt);
 	}
 
+	/**
+	 * checks to see if a word appears isolated
+	 * @param phrase the original string you want to check
+	 * @param keyword the word you want to look for
+	 * @param canBeAlone if it's okay if the phrase is the keyword
+	 * @return a boolean stating if it has the keyword
+	 */
 	private boolean keywordChecker(String phrase, String keyword, boolean canBeAlone)
 	{
 		boolean hasKeyword = false;
