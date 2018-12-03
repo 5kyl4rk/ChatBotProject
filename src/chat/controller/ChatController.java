@@ -1,7 +1,7 @@
 package chat.controller;
 
 import javax.swing.JOptionPane;
-
+import chat.view.ChatFrame;
 import chat.model.Chatbot;
 
 import java.util.Random;
@@ -9,10 +9,12 @@ import java.util.Random;
 public class ChatController
 {
 	private Chatbot simpleBot;
+	private ChatFrame appFrame;
 
 	public ChatController()
 	{
 		simpleBot = new Chatbot("cats");
+		appFrame = new ChatFrame(this);
 
 	}
 
