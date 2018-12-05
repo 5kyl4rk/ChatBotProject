@@ -20,8 +20,9 @@ public class ChatController
 
 	public void start()
 	{
-		//{OLD START}
 		
+		/*
+		//{OLD START}
 		//debugBot();
 		//simpleBot.askName();
 		String prevResponse = simpleBot.getResponse();
@@ -29,7 +30,7 @@ public class ChatController
 		{	String userInput = JOptionPane.showInputDialog(null,prevResponse);
 			prevResponse = interactWithChatbot(userInput);
 		}
-		 
+		*/
 	}
 	
 	/**
