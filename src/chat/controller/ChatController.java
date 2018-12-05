@@ -20,16 +20,16 @@ public class ChatController
 
 	public void start()
 	{
+		//{OLD START}
+		/*
 		//debugBot();
-		
 		simpleBot.askName();
 		String response = simpleBot.getResponse();
 		while (!simpleBot.getLeaveChat())
 		{	
 			response = interactWithChatbot(response);
-			
 		}
-
+		 */
 	}
 	
 	/**
