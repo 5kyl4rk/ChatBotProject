@@ -156,7 +156,7 @@ public class ChatController
 	 * @param sample
 	 *            The String you want to format
 	 * @param characterLength
-	 *            How many character per line until split (Default: 140 characters)
+	 *            How many character per line until split <b>(Default: 140 characters)</b>
 	 * @return String that is vertically formatted
 	 */
 	public String fitString(String sample, int characterLength)
@@ -171,11 +171,13 @@ public class ChatController
 	 * @param sample
 	 *            The String you want to format
 	 * @param characterLength
-	 *            How long the String should go for each line (Default: 140
-	 *            characters)
+	 *            How long the String should go for each line <b>(Default: 140
+	 *            characters)</b>
 	 * @param splitType
-	 *            Formatting type: 1 = split text with hyphen, 2 = splits text with
-	 *            no format, 0 (default) = new line after word ends
+	 *            Formatting type:<br> 
+	 *            <b>1</b> = split text with hyphen,
+	 *            <br> <b>2</b> = splits text with no format,
+	 *            <br> <b>0 (default)</b> = new line after word ends
 	 * @return String that's vertically arranged
 	 */
 	public String fitString(String sample, int characterLength, int splitType)
