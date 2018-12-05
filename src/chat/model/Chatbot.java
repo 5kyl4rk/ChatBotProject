@@ -185,7 +185,7 @@ public class Chatbot
 	 */
 	public String processText(String userText)
 	{
-		String answer;
+		String answer = "";
 		int randomIndex = (int) (Math.random() * responseList.size());
 		String chatbotSays = responseList.get(randomIndex);
 
@@ -195,7 +195,7 @@ public class Chatbot
 
 			if (userText.equalsIgnoreCase("quit"))
 			{
-				JOptionPane.showMessageDialog(null, "See ya!");
+				answer+= "See ya!";
 				this.leaveChat = true;
 			}
 
