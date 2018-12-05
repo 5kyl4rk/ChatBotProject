@@ -162,6 +162,7 @@ public class Chatbot
 
 	}
 
+	/*
 	public void askName()
 	{
 		String userName = JOptionPane.showInputDialog(null, "I am simpleBot, what's your name?");
@@ -173,19 +174,18 @@ public class Chatbot
 
 		JOptionPane.showMessageDialog(null, "Hello " + currentUser);
 	}
+	*/
 
 	/**
-	 * Takes the user's input and uses the chatbot checkers to then give an adequate
-	 * response (As of now it only repeats what the user puts in, except for
-	 * *special* cases)
-	 * 
-	 * @param userText
-	 *            the user's input
+	 * Takes the user's input and uses the chatbot checkers to then give a random
+	 * response
+	 * @param userText the user's input
 	 * @return a String that has additional information based off the user's input
 	 */
 	public String processText(String userText)
 	{
 		String answer = "";
+		String breakText = "\n";
 		int randomIndex = (int) (Math.random() * responseList.size());
 		String chatbotSays = responseList.get(randomIndex);
 
@@ -201,26 +201,26 @@ public class Chatbot
 
 			if (contentChecker(userText))
 			{
-				chatbotSays = "You said the special words";
+				chatbotSays = "You said the special words" + breakText;
 			}
 			if (spookyChecker(userText))
 			{
-				chatbotSays = "You're scaring me";
+				chatbotSays = "You're scaring me" + breakText;
 			}
 
 			if (YNQuestionChecker(userText))
 			{
-				chatbotSays = getYesNoAnswer();
+				chatbotSays = getYesNoAnswer() + breakText;
 			}
 
-			answer = "You said: \"" + userText + "\"";
-			answer += "\nChatbot says: \"" + chatbotSays + "\"";
+			answer = "You said: \"" + userText + "\"" + breakText;
+			answer += "Chatbot says: \"" + chatbotSays + "\"" + breakText;
 
 		}
 		else
 		{
-			answer = "You said: null";
-			answer += "\nChatbot says: \"lol what was that?\"";
+			answer = "You said: null" + breakText;
+			answer += "Chatbot says: \"lol what was that?\"" +breakText;
 		}
 
 		return answer;

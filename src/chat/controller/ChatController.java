@@ -21,15 +21,15 @@ public class ChatController
 	public void start()
 	{
 		//{OLD START}
-		/*
+		
 		//debugBot();
-		simpleBot.askName();
-		String response = simpleBot.getResponse();
+		//simpleBot.askName();
+		String prevResponse = simpleBot.getResponse();
 		while (!simpleBot.getLeaveChat())
-		{	
-			response = interactWithChatbot(response);
+		{	String userInput = JOptionPane.showInputDialog(null,prevResponse);
+			prevResponse = interactWithChatbot(userInput);
 		}
-		 */
+		 
 	}
 	
 	/**
@@ -100,16 +100,14 @@ public class ChatController
 	}
 
 	/**
-	 * allows user to enter in input and displays previous response
-	 * @param displayText the text that will be displayed
+	 * allows user to enter in an input
+	 * @param text the text that will be sent to Chatbot
 	 * @return a new response based off of the user's input after it has been "processed"
 	 */
-	public String interactWithChatbot(String displayText)
+	public String interactWithChatbot(String text)
 	{
 		String output = "";
-		String userInput = JOptionPane.showInputDialog(null, displayText);
-		
-		output = simpleBot.processText(userInput);
+		output = simpleBot.processText(text);
 		
 		return output;
 	}
