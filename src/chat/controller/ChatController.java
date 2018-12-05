@@ -34,6 +34,19 @@ public class ChatController
 	}
 	
 	/**
+	 * allows user to enter in an input
+	 * @param text the text that will be sent to Chatbot
+	 * @return a new response based off of the user's input after it has been "processed"
+	 */
+	public String interactWithChatbot(String text)
+	{
+		String output = "";
+		output = simpleBot.processText(text);
+		
+		return output;
+	}
+	
+	/**
 	 * playing around with String methods
 	 */
 	public void debugBot()
@@ -100,18 +113,6 @@ public class ChatController
 		}
 	}
 
-	/**
-	 * allows user to enter in an input
-	 * @param text the text that will be sent to Chatbot
-	 * @return a new response based off of the user's input after it has been "processed"
-	 */
-	public String interactWithChatbot(String text)
-	{
-		String output = "";
-		output = simpleBot.processText(text);
-		
-		return output;
-	}
 	/**
 	 * uses the chatbot checkers to display specific phrases based off the input
 	 * @param input the user's input

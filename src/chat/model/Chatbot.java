@@ -195,22 +195,22 @@ public class Chatbot
 
 			if (userText.equalsIgnoreCase("quit"))
 			{
-				answer+= "See ya!";
+				answer = "See ya!";
 				this.leaveChat = true;
 			}
 
 			if (contentChecker(userText))
 			{
-				chatbotSays = "You said the special words" + breakText;
+				chatbotSays = "You said the special words";
 			}
 			if (spookyChecker(userText))
 			{
-				chatbotSays = "You're scaring me" + breakText;
+				chatbotSays = "You're scaring me";
 			}
 
 			if (YNQuestionChecker(userText))
 			{
-				chatbotSays = getYesNoAnswer() + breakText;
+				chatbotSays = getYesNoAnswer();
 			}
 
 			answer = "You said: \"" + userText + "\"" + breakText;
