@@ -31,11 +31,9 @@ public class ChatPanel extends JPanel
 		checkerButton = new JButton("Check Text");
 		chatField = new JTextField("Talk to bot here", 50);
 		chatArea = new JTextArea("Chat Area", 20, 50);
+		
 		chatPane = new JScrollPane();
-		
-		
-		
-		
+	
 		
 		setupPanel();
 		setupLayout();
@@ -47,8 +45,8 @@ public class ChatPanel extends JPanel
 	{
 		this.setLayout(appLayout);
 		this.setPreferredSize(new Dimension(600, 600));
-		this.setBackground(new Color(204, 225, 159));
-		
+		this.setBackground(new Color(224, 210, 245));
+		chatArea.setBackground(new Color(204, 225, 159));
 		this.add(chatPane);
 		this.add(chatButton);
 		this.add(saveButton);
