@@ -45,8 +45,8 @@ public class ChatPanel extends JPanel
 	{
 		this.setLayout(appLayout);
 		this.setPreferredSize(new Dimension(600, 600));
-		this.setBackground(new Color(224, 210, 245));
-		chatArea.setBackground(new Color(204, 225, 159));
+		this.setBackground(new Color(2, 70, 152));
+		chatArea.setBackground(new Color(198, 199, 201));
 		this.add(chatPane);
 		this.add(chatButton);
 		this.add(saveButton);
