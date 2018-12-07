@@ -96,6 +96,31 @@ public class ChatPanel extends JPanel
 				chatArea.setCaretPosition(chatArea.getDocument().getLength());
 			}
 		});
+		
+		loadButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				//do something here
+			}
+		});
+		
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				//do something cool here
+			}
+		});
+		
+		checkerButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				//check something here
+			}
+		});
+		
 	}
 	
 	private void setupScrollPane()
