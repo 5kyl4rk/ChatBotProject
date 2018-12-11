@@ -1,6 +1,8 @@
 package chat.view;
 
 import chat.controller.ChatController;
+import chat.controller.IOController;
+
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -111,7 +113,8 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				//do something here
+				String loadedText = IOController.loadfile(appController, "./11 11 1-25 chatbot save.txt");
+				chatArea.setText("Chat Loaded!\n" + loadedText);
 			}
 		});
 		
@@ -119,7 +122,10 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				//do something cool here
+				String chatText = chatArea.getText();
+				String path = ".";//refers to where it's located right now
+				IOController.saveText(appController, path, chatText);
+				chatArea.setText("Chat saved!");
 			}
 		});
 		
