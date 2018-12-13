@@ -56,7 +56,6 @@ public class ChatPanel extends JPanel
 	private String getPath(String choice)
 	{
 		String path = recentPath;
-		JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath: "+ recentPath);
 		int result = -99;
 		JFileChooser fileChooser = new JFileChooser(recentPath);
 		if(choice.equals("save"))
@@ -79,10 +78,10 @@ public class ChatPanel extends JPanel
 				recentPath = fileChooser.getCurrentDirectory().getPath();
 			}
 		}
-		JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath: "+ recentPath);
+		
 		return path;
 	}
-	
+
 	private void setupPanel()
 	{
 		this.setLayout(appLayout);
