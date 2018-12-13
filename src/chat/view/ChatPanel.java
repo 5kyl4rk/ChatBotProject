@@ -24,6 +24,7 @@ public class ChatPanel extends JPanel
 	private JTextArea chatArea;
 	private JScrollPane chatPane;
 	private boolean firstChat;
+	private String recentPath;
 	
 	public ChatPanel(ChatController appController)
 	{
@@ -34,24 +35,52 @@ public class ChatPanel extends JPanel
 		appLayout = new SpringLayout();
 		chatButton = new JButton("Chat");
 		saveButton = new JButton("Save");
-		
 		loadButton = new JButton("Load");
 		checkerButton = new JButton("Check");
-		
 		resetButton = new JButton("Clear");
 		
 		chatField = new JTextField(50);
 		fieldPrompt = new TextPrompt("Talk to bot here", chatField);
 		chatArea = new JTextArea("Chat Area", 20, 50);
-		
 		chatPane = new JScrollPane();
 	
 		firstChat = true;
+		recentPath = "./saves";
 		
 		setupPanel();
 		setupLayout();
 		setupListeners();
 		setupScrollPane();
+	}
+	
+	private String getPath(String choice)
+	{
+		String path = recentPath;
+		JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath: "+ recentPath);
+		int result = -99;
+		JFileChooser fileChooser = new JFileChooser(recentPath);
+		if(choice.equals("save"))
+		{
+			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			result = fileChooser.showSaveDialog(this);
+			if(result == JFileChooser.APPROVE_OPTION)
+			{
+				path = fileChooser.getCurrentDirectory().getAbsolutePath();
+				recentPath = fileChooser.getCurrentDirectory().getPath();
+				
+			}
+		}
+		else
+		{
+			result = fileChooser.showOpenDialog(this);
+			if(result == JFileChooser.APPROVE_OPTION)
+			{
+				path = fileChooser.getSelectedFile().getAbsolutePath();
+				recentPath = fileChooser.getCurrentDirectory().getPath();
+			}
+		}
+		JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath: "+ recentPath);
+		return path;
 	}
 	
 	private void setupPanel()
@@ -123,8 +152,9 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				String loadedText = IOController.loadfile(appController, "./11 11 1-25 chatbot save.txt");
+				String loadedText = IOController.loadfile(appController, getPath("load"));
 				chatArea.setText("Chat Loaded!\n" + loadedText);
+				firstChat = false;
 			}
 		});
 		
@@ -133,7 +163,7 @@ public class ChatPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				String chatText = chatArea.getText();
-				String path = ".";//refers to where it's located right now
+				String path = getPath("save");
 				IOController.saveText(appController, path, chatText);
 				chatArea.setText("Chat saved!");
 			}
@@ -168,4 +198,6 @@ public class ChatPanel extends JPanel
 		chatPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		chatPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 	}
+
+	
 }

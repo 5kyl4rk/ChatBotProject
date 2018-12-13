@@ -79,6 +79,7 @@ public class Chatbot
 		responseList.add("Sonic R is the best racing game, no doubts about it");
 		responseList.add("Do you like jazz?");
 		responseList.add(":D");
+		responseList.add("Freddie Mercury used to say that a lot");
 		responseList.add("Jake was here");
 
 		// --[Spookylist]--
