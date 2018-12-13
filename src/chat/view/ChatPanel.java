@@ -2,6 +2,7 @@ package chat.view;
 
 import chat.controller.ChatController;
 import chat.controller.IOController;
+import chat.utilities.TextPrompt;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -19,6 +20,7 @@ public class ChatPanel extends JPanel
 	private JButton saveButton;
 	private JButton resetButton;
 	private JTextField chatField;
+	private TextPrompt chatPrompt;
 	private JTextArea chatArea;
 	private JScrollPane chatPane;
 	
@@ -37,7 +39,8 @@ public class ChatPanel extends JPanel
 		
 		resetButton = new JButton("Clear");
 		
-		chatField = new JTextField("Talk to bot here", 50);
+		chatField = new JTextField(50);
+		chatPrompt = new TextPrompt("Talk to bot here", chatField);
 		chatArea = new JTextArea("Chat Area", 20, 50);
 		chatPane = new JScrollPane();
 	
