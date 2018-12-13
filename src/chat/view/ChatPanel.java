@@ -57,7 +57,7 @@ public class ChatPanel extends JPanel
 	{
 		String path = recentPath;
 		int result = -99;
-		JFileChooser fileChooser = new JFileChooser(recentPath);
+		JFileChooser fileChooser = new JFileChooser(path);
 		if(choice.equals("save"))
 		{
 			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
