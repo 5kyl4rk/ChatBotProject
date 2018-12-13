@@ -20,9 +20,10 @@ public class ChatPanel extends JPanel
 	private JButton saveButton;
 	private JButton resetButton;
 	private JTextField chatField;
-	private TextPrompt chatPrompt;
+	private TextPrompt fieldPrompt;
 	private JTextArea chatArea;
 	private JScrollPane chatPane;
+	private boolean firstChat;
 	
 	public ChatPanel(ChatController appController)
 	{
@@ -40,11 +41,12 @@ public class ChatPanel extends JPanel
 		resetButton = new JButton("Clear");
 		
 		chatField = new JTextField(50);
-		chatPrompt = new TextPrompt("Talk to bot here", chatField);
+		fieldPrompt = new TextPrompt("Talk to bot here", chatField);
 		chatArea = new JTextArea("Chat Area", 20, 50);
+		
 		chatPane = new JScrollPane();
 	
-	
+		firstChat = true;
 		
 		setupPanel();
 		setupLayout();
@@ -106,6 +108,11 @@ public class ChatPanel extends JPanel
 				String input = chatField.getText();
 				String output = "";
 				output =  appController.interactWithChatbot(input);
+				if(firstChat)
+				{
+					chatArea.setText("");
+					firstChat = false;
+				}
 				chatArea.append(output);
 				chatField.setText("");
 				chatArea.setCaretPosition(chatArea.getDocument().getLength());
@@ -144,7 +151,8 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				chatArea.setText("");
+				chatArea.setText("Chat Area");
+				firstChat = true;
 			}
 		});
 		
