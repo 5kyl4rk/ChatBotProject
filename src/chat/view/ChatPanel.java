@@ -45,7 +45,7 @@ public class ChatPanel extends JPanel
 		chatPane = new JScrollPane();
 	
 		firstChat = true;
-		recentPath = "./saves";
+		recentPath = "./saves"; //default path is a folder called "saves" located with the project
 		
 		setupPanel();
 		setupLayout();
@@ -58,14 +58,16 @@ public class ChatPanel extends JPanel
 		String path = recentPath;
 		int result = -99;
 		JFileChooser fileChooser = new JFileChooser(path);
+		JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath:" + recentPath);
 		if(choice.equals("save"))
 		{
 			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			result = fileChooser.showSaveDialog(this);
 			if(result == JFileChooser.APPROVE_OPTION)
 			{
-				path = fileChooser.getCurrentDirectory().getAbsolutePath();
-				recentPath = fileChooser.getCurrentDirectory().getPath();
+				path = fileChooser.getCurrentDirectory().getAbsolutePath();//path is the directory folder
+				
+				recentPath = fileChooser.getCurrentDirectory().getPath();//saves path to use for later
 				
 			}
 		}
@@ -75,10 +77,10 @@ public class ChatPanel extends JPanel
 			if(result == JFileChooser.APPROVE_OPTION)
 			{
 				path = fileChooser.getSelectedFile().getAbsolutePath();
-				recentPath = fileChooser.getCurrentDirectory().getPath();
+				recentPath = fileChooser.getCurrentDirectory().getAbsolutePath();
 			}
 		}
-		
+		JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath:" + recentPath);
 		return path;
 	}
 

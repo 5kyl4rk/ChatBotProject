@@ -13,14 +13,15 @@ public class IOController
 	{
 		try 
 		{
+			
+			String filename = path;//gets path
 			//creates a file name using the date and time created
-			String filename = path;
 			Calendar date = Calendar.getInstance();
 			filename += "/" + date.get(Calendar.MONTH) + " " + date.get(Calendar.DAY_OF_MONTH) + " ";
 			filename += date.get(Calendar.HOUR) + "-" +date.get(Calendar.MINUTE);
 			filename += " chatbot save.txt";
 			
-			//makes a new file using that name
+			//makes a new file using that name and path
 			File saveFile = new File(filename);
 			Scanner textScanner = new Scanner(textToSave);
 			PrintWriter saveText = new PrintWriter(saveFile);
@@ -54,16 +55,17 @@ public class IOController
 		
 		try
 		{
-			File saveFile = new File(path);
-			Scanner fileScanner;
-			if(saveFile.exists())
+			File saveFile = new File(path); //retrieve file using path
+			Scanner fileScanner;//scanner will read file's data
+			
+			if(saveFile.exists())//if file can be located...
 			{
-				fileScanner = new Scanner(saveFile);
-				while(fileScanner.hasNext())
+				fileScanner = new Scanner(saveFile);//use Scanner to read file
+				while(fileScanner.hasNext())//while there's still more lines...
 				{
-					contents += fileScanner.nextLine() + "\n";
+					contents += fileScanner.nextLine() + "\n";//save each line and breaks it (.nextline() consumes the enter space)
 				}
-				fileScanner.close();
+				fileScanner.close(); //close scanner
 			}
 		}
 		catch(IOException error)
