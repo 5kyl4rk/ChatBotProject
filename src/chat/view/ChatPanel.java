@@ -58,7 +58,7 @@ public class ChatPanel extends JPanel
 		String path = recentPath;
 		int result = -99;
 		JFileChooser fileChooser = new JFileChooser(path);
-		JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath:" + recentPath);
+		//JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath:" + recentPath);
 		if(choice.equals("save"))
 		{
 			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -77,10 +77,10 @@ public class ChatPanel extends JPanel
 			if(result == JFileChooser.APPROVE_OPTION)
 			{
 				path = fileChooser.getSelectedFile().getAbsolutePath();
-				recentPath = fileChooser.getCurrentDirectory().getAbsolutePath();
+				recentPath = fileChooser.getCurrentDirectory().getPath();
 			}
 		}
-		JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath:" + recentPath);
+		//JOptionPane.showMessageDialog(this, "path: "+ path +"\nrecentPath:" + recentPath);
 		return path;
 	}
 
@@ -167,6 +167,7 @@ public class ChatPanel extends JPanel
 				String path = getPath("save");
 				IOController.saveText(appController, path, chatText);
 				chatArea.setText("Chat saved!");
+				firstChat = true;
 			}
 		});
 		

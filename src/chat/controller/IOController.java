@@ -30,7 +30,11 @@ public class IOController
 			while(textScanner.hasNext())
 			{
 				String currentLine = textScanner.nextLine();
-				saveText.println(currentLine);
+				if(!currentLine.toLowerCase().contains("Chat Loaded!"))
+				{
+					saveText.println(currentLine);
+				}
+				
 			}
 			
 			//closes Scanner and Writer to prevent leaks
