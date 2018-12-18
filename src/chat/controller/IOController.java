@@ -30,7 +30,11 @@ public class IOController
 			while(textScanner.hasNext())
 			{
 				String currentLine = textScanner.nextLine();
-				if(!currentLine.toLowerCase().contains("Chat Loaded!"))
+				if(currentLine.toLowerCase().contains("chat loaded"))
+				{
+					saveText.print("");
+				}
+				else
 				{
 					saveText.println(currentLine);
 				}
