@@ -7,6 +7,7 @@ import chat.utilities.TextPrompt;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -19,12 +20,16 @@ public class ChatPanel extends JPanel
 	private JButton loadButton;
 	private JButton saveButton;
 	private JButton resetButton;
+	private JButton tweetButton;
+	private JButton searchTwitterButton;
 	private JTextField chatField;
 	private TextPrompt fieldPrompt;
 	private JTextArea chatArea;
+	private JPanel buttonPanel;
 	private JScrollPane chatPane;
 	private boolean firstChat;
 	private String recentPath;
+	
 	
 	public ChatPanel(ChatController appController)
 	{
@@ -38,6 +43,10 @@ public class ChatPanel extends JPanel
 		loadButton = new JButton("Load");
 		checkerButton = new JButton("Check");
 		resetButton = new JButton("Clear");
+		tweetButton = new JButton("Send Tweet");
+		searchTwitterButton = new JButton("Search Twitter");
+		
+		buttonPanel = new JPanel(new GridLayout(1,0));
 		
 		chatField = new JTextField(50);
 		fieldPrompt = new TextPrompt("Talk to bot here", chatField);
@@ -87,15 +96,15 @@ public class ChatPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(appLayout);
-		this.setPreferredSize(new Dimension(600, 600));
+		this.setPreferredSize(new Dimension(1024,768));
 		this.setBackground(new Color(2, 70, 152));
 		chatArea.setBackground(new Color(198, 199, 201));
 		this.add(chatPane);
-		this.add(chatButton);
-		this.add(saveButton);
-		this.add(loadButton);
-		this.add(checkerButton);
-		this.add(resetButton);
+//		this.add(chatButton);
+//		this.add(saveButton);
+//		this.add(loadButton);
+//		this.add(checkerButton);
+//		this.add(resetButton);
 		this.add(chatField);
 	}
 	
