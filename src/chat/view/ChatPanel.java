@@ -22,8 +22,16 @@ public class ChatPanel extends JPanel
 	private JButton resetButton;
 	private JButton tweetButton;
 	private JButton searchTwitterButton;
+	private JLabel title;
 	
 	private ImageIcon saveIcon;
+	private ImageIcon loadIcon;
+	private ImageIcon logoIcon;
+	private ImageIcon checkIcon;
+	private ImageIcon clearIcon;
+	private ImageIcon tweetIcon;
+	private ImageIcon searchIcon;
+	private ImageIcon chatIcon;
 	
 	private JTextField chatField;
 	private TextPrompt fieldPrompt;
@@ -41,17 +49,27 @@ public class ChatPanel extends JPanel
 		
 		this.appController = appController;
 		
-		imagePath = "/chat/view/images/chat.png";
+		imagePath = "/chat/view/images/";
 		appLayout = new SpringLayout();
+	
+		saveIcon = new ImageIcon(getClass().getResource(imagePath + "save.png"));
+		loadIcon = new ImageIcon(getClass().getResource(imagePath + "load.png"));
+		logoIcon = new ImageIcon(getClass().getResource(imagePath + "logo.png"));
+		checkIcon = new ImageIcon(getClass().getResource(imagePath + "check.png"));
+		clearIcon = new ImageIcon(getClass().getResource(imagePath + "clear.png"));
+		tweetIcon = new ImageIcon(getClass().getResource(imagePath + "tweet.png"));
+		
 		chatButton = new JButton("Chat");
-		saveButton = new JButton("Save");
-		loadButton = new JButton("Load");
-		checkerButton = new JButton("Check");
-		resetButton = new JButton("Clear");
+		saveButton = new JButton("Save",saveIcon);
+		loadButton = new JButton("Load",loadIcon);
+		checkerButton = new JButton("Check",checkIcon);
+		resetButton = new JButton("Clear",clearIcon);
 		tweetButton = new JButton("Send Tweet");
 		searchTwitterButton = new JButton("Search Twitter");
 		
-		//saveIcon = new ImageIcon(getClass().getResource(imagePath + "save.png"));
+		title = new JLabel(logoIcon);
+		appLayout.putConstraint(SpringLayout.NORTH, title, 0, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.WEST, title, 306, SpringLayout.WEST, this);
 		
 		buttonPanel = new JPanel(new GridLayout(1,0));
 		appLayout.putConstraint(SpringLayout.SOUTH, buttonPanel, -84, SpringLayout.SOUTH, this);
@@ -109,9 +127,10 @@ public class ChatPanel extends JPanel
 		this.setPreferredSize(new Dimension(1024,768));
 		this.setBackground(new Color(2, 70, 152));
 		chatArea.setBackground(new Color(198, 199, 201));
+		this.add(title);
 		this.add(chatPane);
 		buttonPanel.setPreferredSize(new Dimension(900,150));
-		buttonPanel.setBackground(Color.CYAN);
+		buttonPanel.setBackground(new Color(49,49,67));
 		this.add(buttonPanel);
 		this.add(chatField);
 	}
