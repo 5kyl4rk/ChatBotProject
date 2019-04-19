@@ -22,6 +22,9 @@ public class ChatPanel extends JPanel
 	private JButton resetButton;
 	private JButton tweetButton;
 	private JButton searchTwitterButton;
+	
+	private ImageIcon saveIcon;
+	
 	private JTextField chatField;
 	private TextPrompt fieldPrompt;
 	private JTextArea chatArea;
@@ -29,6 +32,7 @@ public class ChatPanel extends JPanel
 	private JScrollPane chatPane;
 	private boolean firstChat;
 	private String recentPath;
+	private String imagePath;
 	
 	
 	public ChatPanel(ChatController appController)
@@ -37,6 +41,7 @@ public class ChatPanel extends JPanel
 		
 		this.appController = appController;
 		
+		imagePath = "/chat/view/images/chat.png";
 		appLayout = new SpringLayout();
 		chatButton = new JButton("Chat");
 		saveButton = new JButton("Save");
@@ -46,12 +51,16 @@ public class ChatPanel extends JPanel
 		tweetButton = new JButton("Send Tweet");
 		searchTwitterButton = new JButton("Search Twitter");
 		
+		//saveIcon = new ImageIcon(getClass().getResource(imagePath + "save.png"));
+		
 		buttonPanel = new JPanel(new GridLayout(1,0));
+		appLayout.putConstraint(SpringLayout.SOUTH, buttonPanel, -84, SpringLayout.SOUTH, this);
 		
 		chatField = new JTextField(50);
 		fieldPrompt = new TextPrompt("Talk to bot here", chatField);
 		chatArea = new JTextArea("Chat Area", 20, 50);
 		chatPane = new JScrollPane();
+		
 	
 		firstChat = true;
 		recentPath = "./saves"; //default path is a folder called "saves" located with the project
@@ -60,6 +69,7 @@ public class ChatPanel extends JPanel
 		setupLayout();
 		setupListeners();
 		setupScrollPane();
+		setupButtonPanel();
 	}
 	
 	private String getPath(String choice)
@@ -100,11 +110,9 @@ public class ChatPanel extends JPanel
 		this.setBackground(new Color(2, 70, 152));
 		chatArea.setBackground(new Color(198, 199, 201));
 		this.add(chatPane);
-//		this.add(chatButton);
-//		this.add(saveButton);
-//		this.add(loadButton);
-//		this.add(checkerButton);
-//		this.add(resetButton);
+		buttonPanel.setPreferredSize(new Dimension(900,150));
+		buttonPanel.setBackground(Color.CYAN);
+		this.add(buttonPanel);
 		this.add(chatField);
 	}
 	
@@ -117,25 +125,20 @@ public class ChatPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.NORTH, chatField, 30, SpringLayout.SOUTH, chatPane);
 		appLayout.putConstraint(SpringLayout.WEST, chatField, 0, SpringLayout.WEST, chatPane);
 		appLayout.putConstraint(SpringLayout.EAST, chatField, 0, SpringLayout.EAST, chatPane);
-		appLayout.putConstraint(SpringLayout.WEST, checkerButton, 0, SpringLayout.WEST, chatPane);
-		appLayout.putConstraint(SpringLayout.WEST, chatButton, 450, SpringLayout.WEST, this);
-		appLayout.putConstraint(SpringLayout.SOUTH, chatButton, -23, SpringLayout.NORTH, saveButton);
-		appLayout.putConstraint(SpringLayout.SOUTH, saveButton, -22, SpringLayout.SOUTH, this);
-		appLayout.putConstraint(SpringLayout.WEST, resetButton, 110, SpringLayout.EAST, checkerButton);
-		appLayout.putConstraint(SpringLayout.EAST, resetButton, -110, SpringLayout.WEST, chatButton);
-		appLayout.putConstraint(SpringLayout.NORTH, resetButton, 1, SpringLayout.NORTH, chatButton);
-		appLayout.putConstraint(SpringLayout.SOUTH, resetButton, -23, SpringLayout.NORTH, saveButton);
-		appLayout.putConstraint(SpringLayout.NORTH, chatButton, 24, SpringLayout.SOUTH, chatField);
-		appLayout.putConstraint(SpringLayout.NORTH, checkerButton, 24, SpringLayout.SOUTH, chatField);
-		appLayout.putConstraint(SpringLayout.EAST, chatButton, 0, SpringLayout.EAST, chatPane);
-		appLayout.putConstraint(SpringLayout.SOUTH, checkerButton, -23, SpringLayout.NORTH, loadButton);
-		appLayout.putConstraint(SpringLayout.EAST, checkerButton, -450, SpringLayout.EAST, this);
-		appLayout.putConstraint(SpringLayout.NORTH, loadButton, 0, SpringLayout.NORTH, saveButton);
-		appLayout.putConstraint(SpringLayout.EAST, saveButton, -50, SpringLayout.WEST, chatButton);
-		appLayout.putConstraint(SpringLayout.WEST, loadButton, 50, SpringLayout.EAST, checkerButton);
-		appLayout.putConstraint(SpringLayout.WEST, saveButton, -25, SpringLayout.EAST, resetButton);
-		appLayout.putConstraint(SpringLayout.EAST, loadButton, 25, SpringLayout.WEST, resetButton);
+		appLayout.putConstraint(SpringLayout.WEST, buttonPanel, 0, SpringLayout.WEST, chatPane);
+		appLayout.putConstraint(SpringLayout.EAST, buttonPanel, 0, SpringLayout.EAST, chatPane);
 		
+	}
+	
+	private void setupButtonPanel()
+	{
+		buttonPanel.add(chatButton);
+		buttonPanel.add(saveButton);
+		buttonPanel.add(loadButton);
+		buttonPanel.add(checkerButton);
+		buttonPanel.add(resetButton);
+		buttonPanel.add(tweetButton);
+		buttonPanel.add(searchTwitterButton);
 	}
 	
 	private void setupListeners()
