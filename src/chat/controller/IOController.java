@@ -87,5 +87,12 @@ public class IOController
 		return contents;
 	}
 	
+	public static String loadFromFile(ChatController app, String fileName)
+	{
+		String fileOutput = "owo";
+		
+		return fileOutput;
+	}
+	
 	
 }
