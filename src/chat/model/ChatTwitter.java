@@ -24,6 +24,7 @@ public class ChatTwitter
 {
 	private ChatController app;
 	private Twitter chatTwitter;
+	private String tweetEnd;
 	private List<Status> searchedTweets;
 	private List<String> tweetedWords;
 	private long totalWordCount;
@@ -33,6 +34,7 @@ public class ChatTwitter
 	{
 		this.app = app;
 		this.chatTwitter = TwitterFactory.getSingleton();
+		this.tweetEnd = " @CodyHenrichsen, @CSCheerleader, @ CTECNow, @ChatbotCTEC";
 		this.searchedTweets = new ArrayList<Status>();
 		this.tweetedWords = new ArrayList<String>();
 		this.wordsAndCount = new HashMap<String, Integer>();

@@ -3,6 +3,7 @@ package chat.controller;
 import javax.swing.JOptionPane;
 import chat.view.ChatFrame;
 import chat.model.Chatbot;
+import chat.model.ChatTwitter;
 
 import java.util.Random;
 
@@ -10,11 +11,13 @@ public class ChatController
 {
 	private Chatbot simpleBot;
 	private ChatFrame appFrame;
+	private ChatTwitter myTwitter;
 
 	public ChatController()
 	{
 		simpleBot = new Chatbot("owo");
 		appFrame = new ChatFrame(this);
+		myTwitter = new ChatTwitter(this);
 
 	}
 
@@ -81,8 +84,12 @@ public class ChatController
 	{
 		JOptionPane.showMessageDialog(appFrame, error.getMessage());
 	}
+	public void tweet(String text)
+	{
+		myTwitter.sendTweet(text);
+	}
 
-	// [RANDOM METHODS]
+	// =====[RANDOM METHODS]=====
 	/**
 	 * playing around with String methods
 	 */
