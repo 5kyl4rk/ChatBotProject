@@ -132,7 +132,7 @@ public class ChatTwitter
 		//String fileText = IOController.loadFromFile(app, "commonWords.txt");
 		int wordCount = 0;
 
-		Scanner wordScanner = new Scanner(this.getClass().getResourceAsStream("data/commonWords.txt"));
+		Scanner wordScanner = new Scanner(this.getClass().getResourceAsStream("chat.data/commonWords.txt"));
 
 		while (wordScanner.hasNextLine())
 		{
@@ -147,7 +147,7 @@ public class ChatTwitter
 		// Uses the InputStream class
 		// Notice the lack of try/catch
 
-		wordScanner = new Scanner(this.getClass().getResourceAsStream("data/commonWords.txt"));
+		wordScanner = new Scanner(this.getClass().getResourceAsStream("chat.data/commonWords.txt"));
 		for (int index = 0; index < boringWords.length; index++)
 		{
 			boringWords[index] = wordScanner.nextLine();
