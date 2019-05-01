@@ -34,7 +34,7 @@ public class ChatTwitter
 	{
 		this.app = app;
 		this.chatTwitter = TwitterFactory.getSingleton();
-		this.tweetEnd = " @CodyHenrichsen, @CSCheerleader, @ CTECNow, @ChatbotCTEC";
+		//this.tweetEnd = " @CodyHenrichsen, @CSCheerleader, @ CTECNow, @ChatbotCTEC";
 		this.searchedTweets = new ArrayList<Status>();
 		this.tweetedWords = new ArrayList<String>();
 		this.wordsAndCount = new HashMap<String, Integer>();
@@ -129,10 +129,10 @@ public class ChatTwitter
 	private String[] createIgnoredWordArray()
 	{
 		String[] boringWords;
-		String fileText = IOController.loadFromFile(app, "commonWords.txt");
+		//String fileText = IOController.loadFromFile(app, "commonWords.txt");
 		int wordCount = 0;
 
-		Scanner wordScanner = new Scanner(fileText);
+		Scanner wordScanner = new Scanner(this.getClass().getResourceAsStream("data");
 
 		while (wordScanner.hasNextLine())
 		{
